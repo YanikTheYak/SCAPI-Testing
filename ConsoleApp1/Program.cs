@@ -4,11 +4,16 @@ dynamic mySCAPI = SCAPI.Init();
 //dynamic myModel = SCAPI.CreateNewModel(mySCAPI); // <-- Fails
 dynamic myModel = SCAPI.OpenModel(mySCAPI,"C:\\Users\\User\\Desktop\\BigDMModels\\ITSKopie2020.erwin");
 dynamic mySession = SCAPI.CreateSession(mySCAPI, myModel);
+int i = 0;
 if (mySession.IsOpen()) {
     dynamic myModelObjects = mySession.ModelObjects;
     Console.WriteLine("Model contains (" + myModelObjects.Count() + ")");
     foreach (dynamic myModelObject in myModelObjects) {
         Console.WriteLine(" - " + myModelObject.Name() + " " + myModelObject.ObjectId());
+
+
+        if (i++ > 10)   // Quit out - too much to write
+            break;
     }
 }
 Console.WriteLine("Done, World!");
